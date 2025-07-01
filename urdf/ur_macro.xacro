@@ -335,7 +335,7 @@
     <joint name="${tf_prefix}base_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}" />
-      <child link="${tf_prefix}base_link" />
+      <child link="${tf_prefix}table" />
     </joint>
 
     <!-- joints - main serial chain -->
@@ -458,13 +458,100 @@
       <origin xyz="0 0 0" rpy="0 ${-pi/2.0} ${-pi/2.0}" />
     </joint>
 
-    <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
-    <link name="${tf_prefix}tool0"/>
-    <joint name="${tf_prefix}flange-tool0" type="fixed">
-      <!-- default toolframe - X+ left, Y+ up, Z+ front -->
-      <origin xyz="0 0 0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
+    <link name="${tf_prefix}tool_temp">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <xacro:get_mesh name="ee" type="visual"/>
+        </geometry>
+        <material name="temptu_airpod_gripper">
+          <color rgba="${100.0/255.0} ${100.0/255.0} ${100.0/255.0} 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <xacro:get_mesh name="ee" type="collision"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${tf_prefix}flange-tool_temp" type="fixed">
+      <origin xyz="0 0 0" rpy="-${pi/2.0} 0 -${pi/2.0}"/>
       <parent link="${tf_prefix}flange"/>
+      <child link="${tf_prefix}tool_temp"/>
+    </joint>
+
+    <link name="${tf_prefix}camera_ee" />
+    <joint name="${tf_prefix}tool_temp-camera_ee" type="fixed">
+      <origin xyz="0.006835956674082612 -0.04985659335752479 0.0976500318266122" rpy="0 0 0"/>
+      <parent link="${tf_prefix}tool_temp"/>
+      <child link="${tf_prefix}camera_ee"/>
+    </joint>
+
+	<xacro:property name="airbrush_calib_x_angle" value="-0.009598"/>
+	<xacro:property name="airbrush_calib_y_angle" value="-0.008347"/>
+	<xacro:property name="airbrush_calib_x_shift" value="0.001816"/>
+	<xacro:property name="airbrush_calib_y_shift" value="-0.005313"/>
+	<xacro:property name="airbrush_calib_z_shift" value="-0.006385"/>
+
+    <link name="${tf_prefix}tool0_no_calib" />
+    <joint name="${tf_prefix}tool_temp-tool0_no_calib" type="fixed">
+      <origin xyz="0 0 0.1352" rpy="0 0 0"/>
+      <parent link="${tf_prefix}tool_temp"/>
+      <child link="${tf_prefix}tool0_no_calib"/>
+    </joint>
+
+    <link name="${tf_prefix}tool0" />
+    <joint name="${tf_prefix}tool0_no_calib-tool0" type="fixed">
+      <origin xyz="${-1.0 * airbrush_calib_x_shift} ${airbrush_calib_y_shift} ${airbrush_calib_z_shift}" rpy="${-1.0 * airbrush_calib_y_angle} ${-1.0 * airbrush_calib_x_angle} 0"/>
+      <parent link="${tf_prefix}tool0_no_calib"/>
       <child link="${tf_prefix}tool0"/>
+    </joint>
+
+    <link name="${tf_prefix}laser_ee_no_calib" />
+    <joint name="${tf_prefix}tool_temp-laser_ee_no_calib" type="fixed">
+      <origin xyz="0 -0.0665 0.112" rpy="0 0 0"/>
+      <parent link="${tf_prefix}tool_temp"/>
+      <child link="${tf_prefix}laser_ee_no_calib"/>
+    </joint>
+
+    <xacro:property name="laser_calib_x_angle" value="0.0"/>
+    <xacro:property name="laser_calib_y_angle" value="0.0"/> 
+    <xacro:property name="laser_calib_x_shift" value="0.0"/>
+    <xacro:property name="laser_calib_y_shift" value="0.0"/>
+    <xacro:property name="laser_calib_z_shift" value="0.0"/>
+    
+    <link name="${tf_prefix}laser_ee" />
+    <joint name="${tf_prefix}laser_ee_no_calib-laser_ee" type="fixed">
+      <origin xyz="${-1.0 * laser_calib_x_shift} ${laser_calib_y_shift} ${laser_calib_z_shift}" rpy="${-1.0 * laser_calib_y_angle} ${-1.0 * laser_calib_x_angle} 0"/>
+      <parent link="${tf_prefix}laser_ee_no_calib"/>
+      <child link="${tf_prefix}laser_ee"/>
+    </joint>
+
+    <xacro:property name="table_height" value="0.77"/>
+    <xacro:property name="face_x" value="0"/>
+    <xacro:property name="face_y" value="-0.70"/>
+    <xacro:property name="face_z" value="0.45"/>
+    
+    <link name="${tf_prefix}table">
+      <visual>
+        <origin xyz="0 0 ${table_height}" rpy="0 0 0" />
+        <geometry>
+          <xacro:get_mesh name="table" type="visual"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 ${table_height}" rpy="0 0 0" />
+        <geometry>
+          <xacro:get_mesh name="table" type="collision"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${tf_prefix}table-base_link" type="fixed">
+      <origin xyz="0 0 ${table_height}" rpy="0 0 0"/>
+      <parent link="${tf_prefix}table"/>
+      <child link="${tf_prefix}base_link"/>
     </joint>
 
   </xacro:macro>
