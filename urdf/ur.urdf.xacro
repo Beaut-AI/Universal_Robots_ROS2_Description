@@ -61,7 +61,7 @@
 
    <xacro:if value="${is_sim_gazebo or is_sim_ignition}">
      <link name="ground_plane">
-       <visual>
+       <!-- <visual>
          <origin rpy="0 0 0" xyz="0 0 0"/>
          <geometry>
            <box size="5 5 0"/>
@@ -75,7 +75,7 @@
          <geometry>
            <box size="5 5 0"/>
          </geometry>
-       </collision>
+       </collision> -->
      </link>
 
      <joint name="ground_plane_joint" type="fixed">
