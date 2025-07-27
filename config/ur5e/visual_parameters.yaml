@@ -83,6 +83,16 @@ mesh_files:
         package: ur_description
         path: meshes/ur5e/collision/ee.dae
   
+  cms:
+    visual:
+      mesh:
+        package: ur_description
+        path: meshes/ur5e/visual/cms.dae
+    collision:
+      mesh:
+        package: ur_description
+        path: meshes/ur5e/collision/cms.dae
+  
   table:
     visual:
       mesh:

@@ -487,6 +487,40 @@
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}camera_ee"/>
     </joint>
+  
+  <link name="${tf_prefix}cms_marker">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <xacro:get_mesh name="cms" type="visual"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <xacro:get_mesh name="cms" type="collision"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="${tf_prefix}base_link-cms_marker" type="fixed">
+    <!-- cms label --> <origin xyz="-0.5 0.3 0.4" rpy="${90*(pi/180)} 0 ${45*(pi/180)}"/>
+    <parent link="${tf_prefix}base_link"/>
+    <child link="${tf_prefix}cms_marker"/>
+  </joint>
+  
+  <link name="${tf_prefix}cms_backbubbling" />
+  <joint name="${tf_prefix}cms_marker-cms_backbubbling" type="fixed">
+    <origin xyz="0.053 -0.11736 -0.05377" rpy="${56*(pi/180)} 0 0"/>
+    <parent link="${tf_prefix}cms_marker"/>
+    <child link="${tf_prefix}cms_backbubbling"/>
+  </joint>
+
+  <link name="${tf_prefix}cms_purging" />
+  <joint name="${tf_prefix}cms_marker-cms_purging" type="fixed">
+    <origin xyz="-0.032 -0.11736 -0.05377" rpy="${56*(pi/180)} 0 0"/>
+    <parent link="${tf_prefix}cms_marker"/>
+    <child link="${tf_prefix}cms_purging"/>
+  </joint>
 
 	<xacro:property name="airbrush_calib_x_angle" value="-0.009598"/>
 	<xacro:property name="airbrush_calib_y_angle" value="-0.008347"/>
