@@ -510,16 +510,23 @@
   
   <link name="${tf_prefix}cms_backbubbling" />
   <joint name="${tf_prefix}cms_marker-cms_backbubbling" type="fixed">
-    <origin xyz="0.053 -0.11736 -0.05377" rpy="${56*(pi/180)} 0 0"/>
+    <origin xyz="0.053 -0.11736 -0.05377" rpy="${(-34)*(pi/180)} 0 0"/>
     <parent link="${tf_prefix}cms_marker"/>
     <child link="${tf_prefix}cms_backbubbling"/>
   </joint>
 
   <link name="${tf_prefix}cms_purging" />
   <joint name="${tf_prefix}cms_marker-cms_purging" type="fixed">
-    <origin xyz="-0.032 -0.11736 -0.05377" rpy="${56*(pi/180)} 0 0"/>
+    <origin xyz="-0.032 -0.11736 -0.05377" rpy="${(-34)*(pi/180)} 0 0"/>
     <parent link="${tf_prefix}cms_marker"/>
     <child link="${tf_prefix}cms_purging"/>
+  </joint>
+
+  <link name="${tf_prefix}cms_brush" />
+  <joint name="${tf_prefix}cms_marker-cms_brush" type="fixed">
+    <origin xyz="0.07 -0.06 0.05" rpy="0 0 0"/>
+    <parent link="${tf_prefix}cms_marker"/>
+    <child link="${tf_prefix}cms_brush"/>
   </joint>
 
 	<xacro:property name="airbrush_calib_x_angle" value="-0.009598"/>
@@ -540,6 +547,13 @@
       <origin xyz="${-1.0 * airbrush_calib_x_shift} ${airbrush_calib_y_shift} ${airbrush_calib_z_shift}" rpy="${-1.0 * airbrush_calib_y_angle} ${-1.0 * airbrush_calib_x_angle} 0"/>
       <parent link="${tf_prefix}tool0_no_calib"/>
       <child link="${tf_prefix}tool0"/>
+    </joint>
+
+    <link name="${tf_prefix}paint_cup_ee" />
+    <joint name="${tf_prefix}tool_temp-paint_cup_ee" type="fixed">
+      <origin xyz="0 0 0.07" rpy="0 0 0"/>
+      <parent link="${tf_prefix}tool_temp"/>
+      <child link="${tf_prefix}paint_cup_ee"/>
     </joint>
 
     <link name="${tf_prefix}laser_ee_no_calib" />
