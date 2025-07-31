@@ -524,20 +524,20 @@
 
   <link name="${tf_prefix}cms_brush" />
   <joint name="${tf_prefix}cms_marker-cms_brush" type="fixed">
-    <origin xyz="0.10196 -0.0565 0.01054" rpy="0 0 0"/>
+    <origin xyz="0.10196 -0.0565 -0.01054" rpy="0 0 0"/>
     <parent link="${tf_prefix}cms_marker"/>
     <child link="${tf_prefix}cms_brush"/>
   </joint>
 
-	<xacro:property name="airbrush_calib_x_angle" value="-0.009598"/>
-	<xacro:property name="airbrush_calib_y_angle" value="-0.008347"/>
-	<xacro:property name="airbrush_calib_x_shift" value="0.001816"/>
-	<xacro:property name="airbrush_calib_y_shift" value="-0.005313"/>
-	<xacro:property name="airbrush_calib_z_shift" value="-0.006385"/>
+	<xacro:property name="airbrush_calib_x_angle" value="0.0"/>
+	<xacro:property name="airbrush_calib_y_angle" value="0.0"/>
+	<xacro:property name="airbrush_calib_x_shift" value="0.0"/>
+	<xacro:property name="airbrush_calib_y_shift" value="0.0"/>
+	<xacro:property name="airbrush_calib_z_shift" value="0.0"/>
 
     <link name="${tf_prefix}tool0_no_calib" />
     <joint name="${tf_prefix}tool_temp-tool0_no_calib" type="fixed">
-      <origin xyz="0 0 0.1352" rpy="0 0 0"/>
+      <origin xyz="0 0 0.130" rpy="0 0 0"/>
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}tool0_no_calib"/>
     </joint>
@@ -551,7 +551,7 @@
 
     <link name="${tf_prefix}paint_cup_ee" />
     <joint name="${tf_prefix}tool_temp-paint_cup_ee" type="fixed">
-      <origin xyz="0 0.016 0.09088" rpy="0 0 0"/>
+      <origin xyz="0 0.016 0.10088" rpy="0 0 0"/>
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}paint_cup_ee"/>
     </joint>
