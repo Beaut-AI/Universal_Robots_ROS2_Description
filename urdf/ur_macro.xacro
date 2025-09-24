@@ -483,7 +483,7 @@
 
     <link name="${tf_prefix}camera_ee" />
     <joint name="${tf_prefix}tool_temp-camera_ee" type="fixed">
-      <origin xyz="0.006835956674082612 -0.04985659335752479 0.0976500318266122" rpy="0 0 0"/>
+      <origin xyz="0.009 -0.023 0.107" rpy="0 0 0"/>
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}camera_ee"/>
     </joint>
@@ -537,7 +537,7 @@
 
     <link name="${tf_prefix}tool0_no_calib" />
     <joint name="${tf_prefix}tool_temp-tool0_no_calib" type="fixed">
-      <origin xyz="0 0 0.130" rpy="0 0 0"/>
+      <origin xyz="0 0 0.116" rpy="0 0 0"/>
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}tool0_no_calib"/>
     </joint>
@@ -551,14 +551,14 @@
 
     <link name="${tf_prefix}paint_cup_ee" />
     <joint name="${tf_prefix}tool_temp-paint_cup_ee" type="fixed">
-      <origin xyz="0 0.016 0.10088" rpy="0 0 0"/>
+      <origin xyz="0 0.022 0.088" rpy="0 0 0"/>
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}paint_cup_ee"/>
     </joint>
 
     <link name="${tf_prefix}laser_ee_no_calib" />
     <joint name="${tf_prefix}tool_temp-laser_ee_no_calib" type="fixed">
-      <origin xyz="0 -0.0665 0.112" rpy="0 0 0"/>
+      <origin xyz="0.01 -0.009 0.112" rpy="0 0 0"/>
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}laser_ee_no_calib"/>
     </joint>

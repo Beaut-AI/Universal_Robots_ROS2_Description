@@ -77,11 +77,11 @@ mesh_files:
     visual:
       mesh:
         package: ur_description
-        path: meshes/ur5e/visual/ee.dae
+        path: meshes/ur5e/visual/ee.STL
     collision:
       mesh:
         package: ur_description
-        path: meshes/ur5e/collision/ee.dae
+        path: meshes/ur5e/collision/ee.STL
   
   cms:
     visual:
