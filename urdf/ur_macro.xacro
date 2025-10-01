@@ -510,7 +510,7 @@
   
   <link name="${tf_prefix}cms_backbubbling" />
   <joint name="${tf_prefix}cms_marker-cms_backbubbling" type="fixed">
-    <origin xyz="0 -0.16019 -0.03016" rpy="${(-34)*(pi/180)} 0 0"/>
+    <origin xyz="0 -0.16 -0.029" rpy="${(-34)*(pi/180)} 0 0"/>
     <parent link="${tf_prefix}cms_marker"/>
     <child link="${tf_prefix}cms_backbubbling"/>
   </joint>
@@ -527,6 +527,13 @@
     <origin xyz="0.10196 -0.0565 -0.01054" rpy="0 0 0"/>
     <parent link="${tf_prefix}cms_marker"/>
     <child link="${tf_prefix}cms_brush"/>
+  </joint>
+
+  <link name="${tf_prefix}cms_papper_roll" />
+  <joint name="${tf_prefix}cms_marker-cms_papper_roll" type="fixed">
+    <origin xyz="0.16	-0.115	-0.067" rpy="0 0 0"/>
+    <parent link="${tf_prefix}cms_marker"/>
+    <child link="${tf_prefix}cms_papper_roll"/>
   </joint>
 
 	<xacro:property name="airbrush_calib_x_angle" value="0.0"/>
