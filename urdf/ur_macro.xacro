@@ -503,7 +503,7 @@
     </collision>
   </link>
   <joint name="${tf_prefix}base_link-cms_marker" type="fixed">
-    <!-- cms label --> <origin xyz="-0.5 0.3 0.4" rpy="${90*(pi/180)} 0 ${45*(pi/180)}"/>
+    <!-- cms label --> <origin xyz="-0.674 0.358 0.034" rpy="1.559 -0.011 0.845"/>
     <parent link="${tf_prefix}base_link"/>
     <child link="${tf_prefix}cms_marker"/>
   </joint>
