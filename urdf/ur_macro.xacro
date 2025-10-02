@@ -515,6 +515,13 @@
     <child link="${tf_prefix}cms_backbubbling"/>
   </joint>
 
+  <link name="${tf_prefix}cms_paint_load" />
+  <joint name="${tf_prefix}cms_marker-cms_paint_load" type="fixed">
+    <origin xyz="0	-0.043	-0.025" rpy="0 0 0"/>
+    <parent link="${tf_prefix}cms_marker"/>
+    <child link="${tf_prefix}cms_paint_load"/>
+  </joint>
+
   <link name="${tf_prefix}cms_purging" />
   <joint name="${tf_prefix}cms_marker-cms_purging" type="fixed">
     <origin xyz="-0.032 -0.11736 -0.05377" rpy="${(-34)*(pi/180)} 0 0"/>
