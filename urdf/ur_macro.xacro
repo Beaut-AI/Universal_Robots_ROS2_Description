@@ -503,7 +503,7 @@
     </collision>
   </link>
   <joint name="${tf_prefix}base_link-cms_marker" type="fixed">
-    <!-- cms label --> <origin xyz="-0.674 0.358 0.034" rpy="1.559 -0.011 0.845"/>
+    <!-- cms label --> <origin xyz="-0.667 0.357 0.037" rpy="1.561 -0.023 0.848"/>
     <parent link="${tf_prefix}base_link"/>
     <child link="${tf_prefix}cms_marker"/>
   </joint>
@@ -517,7 +517,7 @@
 
   <link name="${tf_prefix}cms_paint_load" />
   <joint name="${tf_prefix}cms_marker-cms_paint_load" type="fixed">
-    <origin xyz="0	-0.043	-0.025" rpy="0 0 0"/>
+    <origin xyz="0	-0.043	-0.03" rpy="0 0 0"/>
     <parent link="${tf_prefix}cms_marker"/>
     <child link="${tf_prefix}cms_paint_load"/>
   </joint>
