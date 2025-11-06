@@ -487,6 +487,13 @@
       <parent link="${tf_prefix}tool_temp"/>
       <child link="${tf_prefix}camera_ee"/>
     </joint>
+
+  <link name="${tf_prefix}base_face_link" />
+  <joint name="${tf_prefix}base_link-base_face_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 ${(180)*(pi/180)}"/>
+    <parent link="${tf_prefix}base_link"/>
+    <child link="${tf_prefix}base_face_link"/>
+  </joint>
   
   <link name="${tf_prefix}cms_marker">
     <visual>
