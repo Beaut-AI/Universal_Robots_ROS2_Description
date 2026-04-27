@@ -536,13 +536,6 @@
     <child link="${tf_prefix}cms_purging"/>
   </joint>
 
-  <link name="${tf_prefix}cms_brush" />
-  <joint name="${tf_prefix}cms_marker-cms_brush" type="fixed">
-    <origin xyz="0.10196 -0.0565 -0.01054" rpy="0 0 0"/>
-    <parent link="${tf_prefix}cms_marker"/>
-    <child link="${tf_prefix}cms_brush"/>
-  </joint>
-
   <link name="${tf_prefix}cms_paper_roll" />
   <joint name="${tf_prefix}cms_marker-cms_paper_roll" type="fixed">
     <origin xyz="0.16	-0.115	-0.067" rpy="0 0 0"/>
